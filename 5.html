@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+</head>
+<body>
+<li></li>
+    <script>
+       
+       var button1=$("<button></button>");
+       var button2=$("<button></button>");
+
+       var View=Backbone.View.extend({
+        events:{
+          click:function(e){
+            console.log(view.el===e.target);
+          }
+        }
+       });
+
+       var view=new　View({el:button1});
+          view.setElement(button2);
+          button1.trigger('click');
+          button2.trigger('click');
+
+          var view=new Backbone.View;
+              view.setElement("<p><a><b>Test</b></a></p>");
+              console.log(view.$("a b").html());
+
+    </script>
+</body>
+</html>

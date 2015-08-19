@@ -1,0 +1,74 @@
+@import "compass/reset";
+@import "susy";
+
+$susy:(
+	columns:12,
+	container:100%,
+	gutter:1/4,
+	gutter-position:before,
+	debug:(image:show),
+	global-box-sizing:border-box
+	);
+
+@include border-box-sizing;
+
+#todoapp{
+	@include  container;
+}
+
+#header{
+	@include full;
+}
+
+#main{
+	@include full;
+}
+
+#todo-list{
+	@include full;
+	padding:gutter();
+		li{
+			background:red;
+			@include span(full);
+			margin-bottom:gutter();
+		}
+}
+
+#footer{
+	@include full;
+}
+
+
+@include susy-media((min-device-width:480px,max-device-width:900px)){
+	#todo-list li {
+		@include span(6 of 12);
+		&:nth-child(2n+1){
+			@include first;
+		}
+	}
+}
+
+
+@include susy-media((min-device-width:900px,max-device-width:1279px)){
+	#todo-list li {
+		@include span(3 of 12);
+		&:nth-child(4n+1){
+			@include first;
+		}
+	}
+}
+
+@include susy-media((min-device-width:1280px)){
+	#todo-list li {
+		@include span(2 of 12);
+		&:nth-child(6n+1){
+			@include first;
+		}
+	}
+}
+
+
+
+
+
+

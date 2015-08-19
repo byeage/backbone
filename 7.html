@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+</head>
+<body>
+    <div id="todo"></div>
+
+
+
+<script>
+
+var Todo = Backbone.Model.extend({
+defaults: {
+title: '',
+completed: false
+}
+});
+var TodosCollection = Backbone.Collection.extend({
+model: Todo,
+url: '/todos'
+});
+var todos = new TodosCollection();
+todos.fetch();
+var todo2 = todos.get(2);
+todo2.set('title', 'go fishing');
+todo2.save(); // sends HTTP PUT to /todos/2
+todos.create({title: 'Try out code samples'});
+// sends HTTP POST to /todos and adds to collection
+
+
+
+</script>
+</body>
+</html>

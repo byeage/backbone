@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+</head>
+<body>
+    <script>
+     var Todo=Backbone.Model.extend({
+      defaults:{
+        completed:false
+      },
+      validate:function(attribs){
+        if(attribs.title===undefined){
+          return "rember to set a title for you todo";
+        }
+      },
+      initialize:function(){
+        console.log("this model has been initialize");
+          this.on("invalid",function(model,error){
+            console.log(error);
+          })
+      }
+     })
+
+     var myTodo=new Todo();
+      myTodo.set('completed',true,{validate:true});//验证失败。导致设置失败
+
+      console.log(myTodo.get("completed"))
+
+
+    </script>
+</body>
+</html>
